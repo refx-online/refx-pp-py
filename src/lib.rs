@@ -21,7 +21,7 @@ mod perf_attrs;
 mod strains;
 
 #[pymodule]
-fn rosu_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn akatsuki_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyBeatmap>()?;
     m.add_class::<PyCalculator>()?;
 
