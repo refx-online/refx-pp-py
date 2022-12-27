@@ -1,5 +1,5 @@
 use pyo3::{exceptions::PyTypeError, pyclass, pymethods, types::PyDict, PyResult};
-use rosu_pp::Beatmap;
+use akatsuki_pp::Beatmap;
 
 use crate::error::{ErrorExt, KwargsError, ParseError};
 
