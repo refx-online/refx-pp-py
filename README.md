@@ -1,4 +1,4 @@
-# rosu-pp-py
+# akatsuki-pp-py
 
 Difficulty and performance calculation for all [osu!](https://osu.ppy.sh/) modes.
 
@@ -21,7 +21,7 @@ Additionally, the following error types are exposed:
 - `ParseError`: Failed to parse a beatmap
 - `KwargsError`: Invalid kwargs were provided
 
-## How to use rosu-pp-py
+## How to use akatsuki-pp-py
 
 1) The first step is to create a new `Beatmap` instance by providing appropriate kwargs.
 Either of the kwargs `path`, `content`, or `bytes` **must** be given. The kwargs `ar`, `cs`, `hp`, and `od` are optional.
@@ -50,7 +50,7 @@ calc.set_mods(8 + 64) # HDDT
 ## Example
 
 ```py
-from rosu_pp_py import Beatmap, Calculator
+from akatsuki_pp_py import Beatmap, Calculator
 
 map = Beatmap(path = "./maps/100.osu")
 calc = Calculator(mods = 8)
@@ -87,15 +87,14 @@ Installing rosu-pp-py requires a [supported version of Python and Rust](https://
 Once [Python](https://www.python.org/downloads/) and [Rust](https://www.rust-lang.org/learn/get-started) and ready to go, you can install the project with pip:
 
 ```sh
-$ pip install rosu-pp-py
+$ pip install akatsuki-pp-py
 ```
 or
 ```
-$ pip install git+https://github.com/MaxOhn/rosu-pp-py
+$ pip install git+https://github.com/osuAkatsuki/akatsuki-pp-py
 ```
 
 ## Learn More
-- [rosu-pp documentation](https://docs.rs/rosu-pp/latest/rosu_pp/)
 - [Rust documentation](https://www.rust-lang.org).
 - [PyO3 documentation](https://pyo3.rs/).
 - [Python documentation](https://docs.python.org/3/).
