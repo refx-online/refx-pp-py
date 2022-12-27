@@ -1,7 +1,7 @@
 use std::fmt::{Display, Formatter, Result as FmtResult};
 
 use pyo3::{pyclass, pymethods};
-use rosu_pp::{beatmap::BeatmapAttributes, Beatmap};
+use akatsuki_pp::{beatmap::BeatmapAttributes, Beatmap};
 
 #[pyclass(name = "BeatmapAttributes")]
 pub struct PyBeatmapAttributes {
