@@ -1,6 +1,7 @@
 use akatsuki_pp::{
-    osu::OsuDifficultyAttributes, osu_2019::OsuPP, AnyPP, AnyStars, DifficultyAttributes, GameMode,
-    Mods, PerformanceAttributes,
+    osu::{OsuDifficultyAttributes, OsuPerformanceAttributes},
+    osu_2019::OsuPP,
+    AnyPP, AnyStars, DifficultyAttributes, GameMode, Mods, PerformanceAttributes,
 };
 use pyo3::{
     exceptions::{PyTypeError, PyValueError},
@@ -247,7 +248,7 @@ impl PyCalculator {
         }
 
         if let Some(acc) = self.acc {
-            calc = calc.accuracy(acc);
+            calc = calc.accuracy(acc as f32);
         }
 
         let attrs = calc.calculate();
@@ -276,7 +277,7 @@ impl PyCalculator {
             effective_miss_count: attrs.effective_miss_count,
         };
 
-        Ok(PerformanceAttributes::Osu(attrs).into())
+        Ok(PerformanceAttributes::Osu(new_attrs).into())
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
@@ -284,11 +285,11 @@ impl PyCalculator {
         // - is relax
         // - is osu!standard
         //   or mode is not specified and map is osu!standard, as that will be the inferred mode
-        if self.mods.rx()
+        if (self.mods.is_some() && self.mods.unwrap().rx())
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode.contains(&GameMode::Osu))
         {
-            return performance_2019(map);
+            return self.performance_2019(map);
         }
 
         let mut calc = AnyPP::new(&map.inner);
