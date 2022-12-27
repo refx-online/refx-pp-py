@@ -1,7 +1,7 @@
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 
 use pyo3::{ffi, pyclass, pymethods, types::PyList, IntoPy, IntoPyPointer, Py, PyObject, Python};
-use rosu_pp::{
+use akatsuki_pp::{
     catch::CatchStrains, mania::ManiaStrains, osu::OsuStrains, taiko::TaikoStrains, Strains,
 };
 
