@@ -4,7 +4,7 @@ use pyo3::{
     types::PyDict,
     PyResult,
 };
-use rosu_pp::{AnyPP, AnyStars, DifficultyAttributes, GameMode};
+use akatsuki_pp::{AnyPP, AnyStars, DifficultyAttributes, GameMode};
 
 use crate::{
     beatmap::PyBeatmap, diff_attrs::PyDifficultyAttributes, error::KwargsError,

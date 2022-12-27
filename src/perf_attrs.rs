@@ -1,7 +1,7 @@
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 
 use pyo3::{pyclass, pymethods};
-use rosu_pp::{
+use akatsuki_pp::{
     catch::CatchPerformanceAttributes, mania::ManiaPerformanceAttributes,
     osu::OsuPerformanceAttributes, taiko::TaikoPerformanceAttributes, PerformanceAttributes,
 };

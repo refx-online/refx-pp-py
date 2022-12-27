@@ -2,8 +2,8 @@ use std::{error::Error, fmt::Write};
 
 use pyo3::{create_exception, exceptions::PyException};
 
-create_exception!(rosu_pp_py, KwargsError, PyException);
-create_exception!(rosu_pp_py, ParseError, PyException);
+create_exception!(akatsuki_pp_py, KwargsError, PyException);
+create_exception!(akatsuki_pp_py, ParseError, PyException);
 
 pub trait ErrorExt {
     fn unwind(&self, cause: &str) -> String;
