@@ -1,5 +1,4 @@
 #![deny(clippy::all, nonstandard_style, rust_2018_idioms, unused, warnings)]
-#![feature(option_result_contains)]
 
 use self::{
     beatmap::PyBeatmap,
