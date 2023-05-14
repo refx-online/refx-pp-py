@@ -9,6 +9,9 @@ on:
 jobs:
   macos:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        python_version: [3.9, 3.10, 3.11]
     steps:
       - name: Checkout project
         uses: actions/checkout@v3
@@ -16,7 +19,7 @@ jobs:
       - name: Python setup
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python_version }}
           architecture: x64
   
       - name: Rust setup
@@ -57,6 +60,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
+        python_version: [3.9, 3.10, 3.11]
         target: [x64, x86]
     steps:
       - name: Checkout project
@@ -65,7 +69,7 @@ jobs:
       - name: Python setup
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python_version }}
           architecture: ${{ matrix.target }}
 
       - name: Rust setup
@@ -96,6 +100,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
+        python_version: [3.9, 3.10, 3.11]
         target: [x86_64, i686]
     steps:
     - name: Checkout project
@@ -104,7 +109,7 @@ jobs:
     - name: Python setup
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: ${{ matrix.python_version }}
         architecture: x64
 
     - name: Build wheels
@@ -112,7 +117,7 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-        args: --release --out dist -i 3.9
+        args: --release --out dist -i ${{ matrix.python_version }}
 
     - name: Install built wheel
       if: matrix.target == 'x86_64'
@@ -129,6 +134,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: [3.9, 3.10, 3.11]
     needs: [ macos, windows, linux ]
     steps:
       - name: Get artifacts
@@ -139,7 +147,7 @@ jobs:
       - name: Python setup
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python_version }}
 
       - name: Publish to PyPi
         env:
