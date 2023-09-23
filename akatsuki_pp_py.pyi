@@ -1,3 +1,6 @@
+from typing import Optional
+from typing import List
+
 class Beatmap:
     """
     A class containing a parsed beatmap.
@@ -25,7 +28,8 @@ class Beatmap:
     Throws an exception if the map could not be parsed or an invalid kwarg was given
     """
 
-    def __init__(self, **kwargs) -> None: ...
+    def __init__(self, **kwargs) -> None:
+        ...
 
     def set_ar(self, ar: float) -> None:
         """
@@ -229,6 +233,19 @@ class BeatmapAttributes:
     `'n_spinners': int`
         Amount of spinners
     """
+    ar: float
+    cs: float
+    hp: float
+    od: float
+    ar_hit_window: float
+    od_hit_window: float
+    clock_rate: float
+    bpm: float
+    mode: int
+    version: int
+    n_circles: int
+    n_sliders: int
+    n_spinners: int
 
 
 class DifficultyAttributes:
@@ -282,6 +299,27 @@ class DifficultyAttributes:
     `'n_tiny_droplets': Optional[int]`
         Amount of tiny droplets (C)
     """
+    mode: int
+    stars: float
+    max_combo: int
+    aim: Optional[float]
+    speed: Optional[float]
+    flashlight: Optional[float]
+    slider_factor: Optional[float]
+    speed_note_count: Optional[float]
+    ar: Optional[float]
+    od: Optional[float]
+    n_circles: Optional[int]
+    n_sliders: Optional[int]
+    n_spinners: Optional[int]
+    stamina: Optional[float]
+    color: Optional[float]
+    rhythm: Optional[float]
+    peak: Optional[float]
+    hit_window: Optional[float]
+    n_fruits: Optional[int]
+    n_droplets: Optional[int]
+    n_tiny_droplets: Optional[int]
 
 
 class PerformanceAttributes:
@@ -311,6 +349,15 @@ class PerformanceAttributes:
     `'pp_difficulty': Optional[float]`
         Difficulty based portion of the performance points (T, M)
     """
+    mode: int
+    pp: float
+    difficulty: DifficultyAttributes
+    pp_acc: Optional[float]
+    pp_aim: Optional[float]
+    pp_speed: Optional[float]
+    pp_flashlight: Optional[float]
+    effective_miss_count: Optional[float]
+    pp_difficulty: Optional[float]
 
 
 class Strains:
@@ -344,3 +391,14 @@ class Strains:
     `'strains': Optional[List[float]]`
         Strain values (M)
     """
+    mode: int
+    section_len: float
+    aim: Optional[List[float]]
+    aim_no_sliders: Optional[List[float]]
+    speed: Optional[List[float]]
+    flashlight: Optional[List[float]]
+    color: Optional[List[float]]
+    stamina: Optional[List[float]]
+    rhythm: Optional[List[float]]
+    movement: Optional[List[float]]
+    strains: Optional[List[float]]
