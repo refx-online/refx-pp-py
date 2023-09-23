@@ -1,6 +1,6 @@
 [package]
 name = "akatsuki-pp-py"
-version = "0.9.6"
+version = "0.9.7"
 description = "osu! difficulty and pp calculation for all modes"
 authors = ["Max Ohn <ohn.m@hotmail.de>", "tsunyoku <tsunyoku@gmail.com>"]
 license = "MIT"

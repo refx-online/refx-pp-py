@@ -233,19 +233,45 @@ class BeatmapAttributes:
     `'n_spinners': int`
         Amount of spinners
     """
-    ar: float
-    cs: float
-    hp: float
-    od: float
-    ar_hit_window: float
-    od_hit_window: float
-    clock_rate: float
-    bpm: float
-    mode: int
-    version: int
-    n_circles: int
-    n_sliders: int
-    n_spinners: int
+
+    @property
+    def ar(self) -> float: ...
+    
+    @property
+    def cs(self) -> float: ...
+    
+    @property
+    def hp(self) -> float: ...
+    
+    @property
+    def od(self) -> float: ...
+    
+    @property
+    def ar_hit_window(self) -> float: ...
+    
+    @property
+    def od_hit_window(self) -> float: ...
+    
+    @property
+    def clock_rate(self) -> float: ...
+    
+    @property
+    def bpm(self) -> float: ...
+    
+    @property
+    def mode(self) -> int: ...
+    
+    @property
+    def version(self) -> int:
+    
+    @property
+    def n_circles(self) -> int: ...
+    
+    @property
+    def n_sliders(self) -> int: ...
+    
+    @property
+    def n_spinners(self) -> int: ...
 
 
 class DifficultyAttributes:
@@ -299,27 +325,69 @@ class DifficultyAttributes:
     `'n_tiny_droplets': Optional[int]`
         Amount of tiny droplets (C)
     """
-    mode: int
-    stars: float
-    max_combo: int
-    aim: Optional[float]
-    speed: Optional[float]
-    flashlight: Optional[float]
-    slider_factor: Optional[float]
-    speed_note_count: Optional[float]
-    ar: Optional[float]
-    od: Optional[float]
-    n_circles: Optional[int]
-    n_sliders: Optional[int]
-    n_spinners: Optional[int]
-    stamina: Optional[float]
-    color: Optional[float]
-    rhythm: Optional[float]
-    peak: Optional[float]
-    hit_window: Optional[float]
-    n_fruits: Optional[int]
-    n_droplets: Optional[int]
-    n_tiny_droplets: Optional[int]
+
+    @property
+    def mode(self) -> int: ...
+
+    @property
+    def stars(self) -> float: ...
+
+    @property
+    def max_combo(self) -> int: ...
+
+    @property
+    def aim(self) -> Optional[float]: ...
+
+    @property
+    def speed(self) -> Optional[float]: ...
+
+    @property
+    def flashlight(self) -> Optional[float]: ...
+
+    @property
+    def slider_factor(self) -> Optional[float]: ...
+
+    @property
+    def speed_note_count(self) -> Optional[float]: ...
+
+    @property
+    def ar(self) -> Optional[float]: ...
+
+    @property
+    def od(self) -> Optional[float]: ...
+
+    @property
+    def n_circles(self) -> Optional[int]: ...
+
+    @property
+    def n_sliders(self) -> Optional[int]: ...
+
+    @property
+    def n_spinners(self) -> Optional[int]: ...
+
+    @property
+    def stamina(self) -> Optional[float]: ...
+
+    @property
+    def color(self) -> Optional[float]: ...
+
+    @property
+    def rhythm(self) -> Optional[float]: ...
+
+    @property
+    def peak(self) -> Optional[float]: ...
+
+    @property
+    def hit_window(self) -> Optional[float]: ...
+
+    @property
+    def n_fruits(self) -> Optional[int]: ...
+
+    @property
+    def n_droplets(self) -> Optional[int]: ...
+
+    @property
+    def n_tiny_droplets(self) -> Optional[int]: ...
 
 
 class PerformanceAttributes:
@@ -349,15 +417,33 @@ class PerformanceAttributes:
     `'pp_difficulty': Optional[float]`
         Difficulty based portion of the performance points (T, M)
     """
-    mode: int
-    pp: float
-    difficulty: DifficultyAttributes
-    pp_acc: Optional[float]
-    pp_aim: Optional[float]
-    pp_speed: Optional[float]
-    pp_flashlight: Optional[float]
-    effective_miss_count: Optional[float]
-    pp_difficulty: Optional[float]
+
+    @property
+    def mode(self) -> int: ...
+
+    @property
+    def pp(self) -> float: ...
+
+    @property
+    def difficulty(self) -> DifficultyAttributes: ...
+
+    @property
+    def pp_acc(self) -> Optional[float]: ...
+
+    @property
+    def pp_aim(self) -> Optional[float]: ...
+
+    @property
+    def pp_speed(self) -> Optional[float]: ...
+
+    @property
+    def pp_flashlight(self) -> Optional[float]: ...
+
+    @property
+    def effective_miss_count(self) -> Optional[float]: ...
+
+    @property
+    def pp_difficulty(self) -> Optional[float]: ...
 
 
 class Strains:
@@ -391,14 +477,36 @@ class Strains:
     `'strains': Optional[List[float]]`
         Strain values (M)
     """
-    mode: int
-    section_len: float
-    aim: Optional[List[float]]
-    aim_no_sliders: Optional[List[float]]
-    speed: Optional[List[float]]
-    flashlight: Optional[List[float]]
-    color: Optional[List[float]]
-    stamina: Optional[List[float]]
-    rhythm: Optional[List[float]]
-    movement: Optional[List[float]]
-    strains: Optional[List[float]]
+
+    @property
+    def mode(self) -> int: ...
+
+    @property
+    def section_len(self) -> float: ...
+
+    @property
+    def aim(self) -> Optional[List[float]]: ...
+
+    @property
+    def aim_no_sliders(self) -> Optional[List[float]]: ...
+
+    @property
+    def speed(self) -> Optional[List[float]]: ...
+    
+    @property
+    def flashlight(self) -> Optional[List[float]]: ...
+
+    @property
+    def color(self) -> Optional[List[float]]: ...
+
+    @property
+    def stamina(self) -> Optional[List[float]]: ...
+
+    @property
+    def rhythm(self) -> Optional[List[float]]: ...
+
+    @property
+    def movement(self) -> Optional[List[float]]: ...
+
+    @property
+    def strains(self) -> Optional[List[float]]: ...
