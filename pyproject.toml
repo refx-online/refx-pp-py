@@ -17,7 +17,10 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 packages = [{ include = "akatsuki_pp_py" }]
-authors = [{ name = "Max Ohn", email = "ohn.m@hotmail.de" }, { name = "tsunyoku", email = "tsunyoku@gmail.com" }]
+authors = [
+    { name = "Max Ohn", email = "ohn.m@hotmail.de" },
+    { name = "tsunyoku", email = "tsunyoku@gmail.com" },
+]
 readme = "README.md"
 license = { file = "LICENSE" }
 repository = "https://github.com/osuAkatsuki/akatsuki-pp-py"
