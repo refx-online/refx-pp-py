@@ -4,12 +4,12 @@ version = 3
 
 [[package]]
 name = "akatsuki-pp"
-version = "0.9.9"
-source = "git+https://github.com/osuAkatsuki/akatsuki-pp-rs?rev=55cc1f2729988614c0760907e726a8bbae2a8bce#55cc1f2729988614c0760907e726a8bbae2a8bce"
+version = "1.0.0"
+source = "git+https://github.com/osuAkatsuki/akatsuki-pp-rs?rev=d61c4b65657e971dc7239411f9ddc88daba51b88#d61c4b65657e971dc7239411f9ddc88daba51b88"
 
 [[package]]
 name = "akatsuki-pp-py"
-version = "1.0.3"
+version = "1.0.4"
 dependencies = [
  "akatsuki-pp",
  "pyo3",
