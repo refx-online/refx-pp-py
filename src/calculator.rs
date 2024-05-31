@@ -268,6 +268,8 @@ impl PyCalculator {
                 n_spinners: attrs.difficulty.n_spinners,
                 stars: attrs.difficulty.stars,
                 max_combo: attrs.difficulty.max_combo,
+                aim_difficult_strain_count: 0.0,
+                speed_difficult_strain_count: 0.0,
             },
             pp: attrs.pp,
             pp_acc: attrs.pp_acc,
