@@ -33,8 +33,8 @@ jobs:
 
       - name: Install built wheel - x86_64
         run: |
-          pip install akatsuki_pp_py --no-index --find-links dist --force-reinstall
-          python -c "import akatsuki_pp_py"
+          pip install refx_pp_py --no-index --find-links dist --force-reinstall
+          python -c "import refx_pp_py"
 
       - name: Build wheels - universal2
         uses: PyO3/maturin-action@v1
@@ -43,8 +43,8 @@ jobs:
 
       - name: Install built wheel - universal2
         run: |
-          pip install akatsuki_pp_py --no-index --find-links dist --force-reinstall
-          python -c "import akatsuki_pp_py"
+          pip install refx_pp_py --no-index --find-links dist --force-reinstall
+          python -c "import refx_pp_py"
 
       - name: Upload wheels
         uses: actions/upload-artifact@v3
@@ -79,8 +79,8 @@ jobs:
 
       - name: Install built wheel
         run: |
-          pip install akatsuki_pp_py --no-index --find-links dist --force-reinstall
-          python -c "import akatsuki_pp_py"
+          pip install refx_pp_py --no-index --find-links dist --force-reinstall
+          python -c "import refx_pp_py"
 
       - name: Upload wheels
         uses: actions/upload-artifact@v3
@@ -114,8 +114,8 @@ jobs:
     - name: Install built wheel
       if: matrix.target == 'x86_64'
       run: |
-        pip install akatsuki_pp_py --no-index --find-links dist --force-reinstall
-        python -c "import akatsuki_pp_py"
+        pip install refx_pp_py --no-index --find-links dist --force-reinstall
+        python -c "import refx_pp_py"
 
     - name: Upload wheels
       uses: actions/upload-artifact@v3

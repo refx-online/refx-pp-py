@@ -1,6 +1,6 @@
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 
-use akatsuki_pp::{
+use refx_pp::{
     catch::CatchDifficultyAttributes, mania::ManiaDifficultyAttributes,
     osu::OsuDifficultyAttributes, taiko::TaikoDifficultyAttributes, DifficultyAttributes,
 };
@@ -86,6 +86,7 @@ impl Debug for BorrowedDifficultyAttributes<'_> {
                     ar,
                     od,
                     hp,
+                    cs,
                     n_circles,
                     n_sliders,
                     n_spinners,
@@ -106,6 +107,7 @@ impl Debug for BorrowedDifficultyAttributes<'_> {
                     ar,
                     od,
                     hp,
+                    cs,
                     n_circles,
                     n_sliders,
                     n_spinners,

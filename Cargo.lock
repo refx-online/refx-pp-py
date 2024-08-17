@@ -3,19 +3,6 @@
 version = 3
 
 [[package]]
-name = "akatsuki-pp"
-version = "1.0.1"
-source = "git+https://github.com/osuAkatsuki/akatsuki-pp-rs?rev=b96019f50aa7d09bcbde60016481a69df04315e4#b96019f50aa7d09bcbde60016481a69df04315e4"
-
-[[package]]
-name = "akatsuki-pp-py"
-version = "1.0.5"
-dependencies = [
- "akatsuki-pp",
- "pyo3",
-]
-
-[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -178,6 +165,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fb5a58c1855b4b6819d59012155603f0b22ad30cad752600aadfcb695265519a"
 dependencies = [
  "bitflags",
+]
+
+[[package]]
+name = "refx-pp"
+version = "0.0.2"
+source = "git+https://github.com/ldci4/refx-pp-rs?rev=604d0a34066ed844433b6bce073796eb19fe969b#604d0a34066ed844433b6bce073796eb19fe969b"
+
+[[package]]
+name = "refx-pp-py"
+version = "0.0.1"
+dependencies = [
+ "pyo3",
+ "refx-pp",
 ]
 
 [[package]]

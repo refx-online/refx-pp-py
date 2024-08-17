@@ -1,18 +1,18 @@
 [package]
-name = "akatsuki-pp-py"
-version = "1.0.5"
+name = "refx-pp-py"
+version = "0.0.1"
 description = "osu! difficulty and pp calculation for all modes"
-authors = ["Max Ohn <ohn.m@hotmail.de>", "tsunyoku <tsunyoku@gmail.com>"]
+authors = ["Max Ohn <ohn.m@hotmail.de>", "tsunyoku <tsunyoku@gmail.com>", "ldci4 <anoletenu@gmail.com>"]
 license = "MIT"
 edition = "2021"
 
 [lib]
-name = "akatsuki_pp_py"
+name = "refx_pp_py"
 crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.17", features = ["extension-module", "macros"] }
-akatsuki-pp = { git = "https://github.com/osuAkatsuki/akatsuki-pp-rs", rev = "b96019f50aa7d09bcbde60016481a69df04315e4" }
+refx-pp = { git = "https://github.com/ldci4/refx-pp-rs", rev = "604d0a34066ed844433b6bce073796eb19fe969b" }
 
 [profile.release]
 lto = "fat"
