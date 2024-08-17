@@ -50,7 +50,7 @@ calc.set_mods(8 + 64) # HDDT
 ## Example
 
 ```py
-from akatsuki_pp_py import Beatmap, Calculator
+from refx_pp_py import Beatmap, Calculator
 
 map = Beatmap(path = "./maps/100.osu")
 calc = Calculator(mods = 8)
