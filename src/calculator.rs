@@ -31,6 +31,7 @@ pub struct PyCalculator {
     combo: Option<usize>,
     passed_objects: Option<usize>,
     clock_rate: Option<f64>,
+    shaymi_mode: bool,
 }
 
 macro_rules! set_calc {
@@ -69,6 +70,11 @@ impl PyCalculator {
                         3 => Some(GameMode::Mania),
                         _ => return Err(PyValueError::new_err("invalid mode integer")),
                     }
+                }
+                "shaymi_mode" => {
+                    this.shaymi_mode = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'shaymi_mode': must be a boolean"))?;
                 }
                 "mods" => {
                     this.mods = value
@@ -284,6 +290,9 @@ impl PyCalculator {
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
+        if self.shaymi_mode {
+            return self.performance_2019(map);
+        }
         // criteria:
         // - is relax
         // - is osu!standard
