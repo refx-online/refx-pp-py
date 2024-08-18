@@ -169,12 +169,12 @@ dependencies = [
 
 [[package]]
 name = "refx-pp"
-version = "0.0.6"
-source = "git+https://github.com/ldci4/refx-pp-rs?rev=ed02f293af207b9bbf643b678f18b4e5475d96aa#ed02f293af207b9bbf643b678f18b4e5475d96aa"
+version = "0.0.7"
+source = "git+https://github.com/ldci4/refx-pp-rs?rev=8de8487cfa9e8a37c020a11ba65119aad0871abb#8de8487cfa9e8a37c020a11ba65119aad0871abb"
 
 [[package]]
 name = "refx-pp-py"
-version = "0.0.5"
+version = "0.0.7"
 dependencies = [
  "pyo3",
  "refx-pp",

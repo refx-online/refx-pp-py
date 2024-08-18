@@ -1,6 +1,6 @@
 [package]
 name = "refx-pp-py"
-version = "0.0.5"
+version = "0.0.7"
 description = "osu! difficulty and pp calculation for all modes"
 authors = ["Max Ohn <ohn.m@hotmail.de>", "tsunyoku <tsunyoku@gmail.com>", "ldci4 <anoletenu@gmail.com>"]
 license = "MIT"
@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.17", features = ["extension-module", "macros"] }
-refx-pp = { git = "https://github.com/ldci4/refx-pp-rs", rev = "ed02f293af207b9bbf643b678f18b4e5475d96aa" }
+refx-pp = { git = "https://github.com/ldci4/refx-pp-rs", rev = "8de8487cfa9e8a37c020a11ba65119aad0871abb" }
 
 [profile.release]
 lto = "fat"
