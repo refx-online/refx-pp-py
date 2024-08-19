@@ -162,10 +162,7 @@ impl IntoPy<PyObject> for SliceWrapper<'_> {
             let list: Py<PyList> = Py::from_owned_ptr(py, ptr);
 
             for (item, i) in iter.zip(0..) {
-                #[cfg(not(Py_LIMITED_API))]
                 ffi::PyList_SET_ITEM(ptr, i, item.into_ptr());
-                #[cfg(Py_LIMITED_API)]
-                ffi::PyList_SetItem(ptr, i, obj.into_ptr());
             }
 
             list.into()
