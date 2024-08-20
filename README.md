@@ -91,7 +91,7 @@ $ pip install akatsuki-pp-py
 ```
 or
 ```
-$ pip install git+https://github.com/osuAkatsuki/akatsuki-pp-py
+$ pip install git+https://github.com/refx-online/refx-pp-py
 ```
 
 ## Learn More
