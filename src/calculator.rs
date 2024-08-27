@@ -290,14 +290,11 @@ impl PyCalculator {
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
-        if self.shaymi_mode {
-            return self.performance_2019(map);
-        }
         // criteria:
         // - is relax
         // - is osu!standard
         //   or mode is not specified and map is osu!standard, as that will be the inferred mode
-        if (self.mods.is_some() && self.mods.unwrap().rx())
+        if (self.mods.is_some() && self.mods.unwrap().rx()) || self.shaymi_mode
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu))
         {
