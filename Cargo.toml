@@ -1,6 +1,6 @@
 [package]
 name = "refx-pp-py"
-version = "0.1.7"
+version = "0.1.8"
 description = "osu! difficulty and pp calculation for all modes"
 authors = ["Max Ohn <ohn.m@hotmail.de>", "tsunyoku <tsunyoku@gmail.com>", "ldci4 <anoletenu@gmail.com>"]
 license = "MIT"
