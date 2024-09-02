@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.17", features = ["extension-module", "macros"] }
-refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "1f52b2b31aaa976c57550682a4b84a52ac04f4db" }
+refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "7252082d2e4e5b29abbc8e0fc43075e45c6c36eb" }
 
 [profile.release]
 lto = "fat"
