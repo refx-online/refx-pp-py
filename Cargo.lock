@@ -169,8 +169,8 @@ dependencies = [
 
 [[package]]
 name = "refx-pp"
-version = "0.2.2"
-source = "git+https://github.com/refx-online/refx-pp-rs?rev=c276c8c5d127ed8ec8367fb4a15e8d3c54bb0e05#c276c8c5d127ed8ec8367fb4a15e8d3c54bb0e05"
+version = "0.2.7"
+source = "git+https://github.com/refx-online/refx-pp-rs?rev=d98111cd3a21605acd103b37ed8dbca10bf49064#d98111cd3a21605acd103b37ed8dbca10bf49064"
 
 [[package]]
 name = "refx-pp-py"
