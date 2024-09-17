@@ -174,7 +174,7 @@ source = "git+https://github.com/refx-online/refx-pp-rs?rev=4b04a0d5ab9819b5a333
 
 [[package]]
 name = "refx-pp-py"
-version = "0.3.4"
+version = "0.3.5"
 dependencies = [
  "pyo3",
  "refx-pp",
