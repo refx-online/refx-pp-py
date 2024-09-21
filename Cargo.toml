@@ -8,7 +8,8 @@ license = "MIT"
 edition = "2021"
 
 [lib]
-name = "dev_pp_py"
+name = "refx_pp_py"
+# name = "dev_pp_py"
 crate-type = ["cdylib"]
 
 [dependencies]
