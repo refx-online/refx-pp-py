@@ -156,6 +156,24 @@ class Calculator:
         """
         ...
 
+    def cheat_ac(self, ac: int) -> None:
+        """
+        The aim correction value 0-50/80
+        """
+        ...
+
+    def cheat_arc(self, arc: float) -> None:
+        """
+        The AR changer value
+        """
+        ...
+
+    def cheat_hdr(self, hdr: bool) -> None:
+        """
+        The HD remover
+        """
+        ...
+
     def set_passed_objects(self, passed_objects: int) -> None:
         """
         The amount of passed objects, handy for partial plays like fails

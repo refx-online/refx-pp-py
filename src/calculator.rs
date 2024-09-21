@@ -32,6 +32,10 @@ pub struct PyCalculator {
     passed_objects: Option<usize>,
     clock_rate: Option<f64>,
     shaymi_mode: bool,
+
+    ac: Option<usize>,
+    arc: Option<f64>,
+    hdr: Option<bool>,
 }
 
 macro_rules! set_calc {
@@ -121,6 +125,21 @@ impl PyCalculator {
                         .extract()
                         .map_err(|_| PyTypeError::new_err("kwarg 'combo': must be an int"))?;
                 }
+                "ac" => {
+                    this.ac = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'ac': must be an int"))?;
+                }
+                "arc" => {
+                    this.arc = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'arc': must be a real number"))?;
+                }
+                "hdr" => {
+                    this.hdr = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'hdr': must be a boolean"))?;
+                }
                 "passed_objects" => {
                     this.passed_objects = value.extract().map_err(|_| {
                         PyTypeError::new_err("kwarg 'passed_objects': must be an int")
@@ -187,6 +206,18 @@ impl PyCalculator {
 
     fn set_combo(&mut self, combo: usize) {
         self.combo = Some(combo);
+    }
+
+    fn cheat_ac(&mut self, ac: usize) {
+        self.ac = Some(ac);
+    }
+
+    fn cheat_arc(&mut self, arc: f64) {
+        self.arc = Some(arc);
+    }
+
+    fn cheat_hdr(&mut self, hdr: bool) {
+        self.hdr = Some(hdr);
     }
 
     fn set_passed_objects(&mut self, passed_objects: usize) {
@@ -313,6 +344,9 @@ impl PyCalculator {
             n50,
             n_misses,
             combo,
+            ac,
+            arc,
+            hdr,
             passed_objects,
             clock_rate,
         };

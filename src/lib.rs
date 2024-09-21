@@ -21,7 +21,7 @@ mod perf_attrs;
 mod strains;
 
 #[pymodule]
-fn refx_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn dev_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyBeatmap>()?;
     m.add_class::<PyCalculator>()?;
 

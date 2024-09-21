@@ -21,6 +21,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "dev-pp-py"
+version = "0.2.9"
+dependencies = [
+ "pyo3",
+ "refx-pp",
+]
+
+[[package]]
 name = "indoc"
 version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -170,7 +178,7 @@ dependencies = [
 [[package]]
 name = "refx-pp"
 version = "0.2.7"
-source = "git+https://github.com/refx-online/refx-pp-rs?rev=4b04a0d5ab9819b5a33392269ebccc9264440ad5#4b04a0d5ab9819b5a33392269ebccc9264440ad5"
+source = "git+https://github.com/refx-online/refx-pp-rs?rev=fe651bddfc895e49755babaa2352f9e26804c9a2#fe651bddfc895e49755babaa2352f9e26804c9a2"
 
 [[package]]
 name = "refx-pp-py"
