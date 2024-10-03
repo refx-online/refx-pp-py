@@ -36,6 +36,9 @@ pub struct PyCalculator {
     ac: Option<usize>,
     arc: Option<f64>,
     hdr: Option<bool>,
+
+    tw: Option<usize>,
+    cs: Option<bool>,
 }
 
 macro_rules! set_calc {
@@ -140,6 +143,16 @@ impl PyCalculator {
                         .extract()
                         .map_err(|_| PyTypeError::new_err("kwarg 'hdr': must be a boolean"))?;
                 }
+                "tw" => {
+                    this.hdr = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'tw': must be an int"))?;
+                }
+                "cs" => {
+                    this.hdr = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'cs': must be a boolean"))?;
+                }
                 "passed_objects" => {
                     this.passed_objects = value.extract().map_err(|_| {
                         PyTypeError::new_err("kwarg 'passed_objects': must be an int")
@@ -220,6 +233,14 @@ impl PyCalculator {
         self.hdr = Some(hdr);
     }
 
+    fn cheat_tw(&mut self, tw: usize) {
+        self.tw = Some(tw);
+    }
+
+    fn cheat_cs(&mut self, cs: bool) {
+        self.cs = Some(cs);
+    }
+
     fn set_passed_objects(&mut self, passed_objects: usize) {
         self.passed_objects = Some(passed_objects);
     }
@@ -278,6 +299,11 @@ impl PyCalculator {
             n100,
             n50,
             passed_objects,
+            ac,
+            arc,
+            hdr,
+            tw,
+            cs,
         };
 
         if let Some(n_misses) = self.n_misses {

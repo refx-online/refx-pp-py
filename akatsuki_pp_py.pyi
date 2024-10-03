@@ -174,6 +174,18 @@ class Calculator:
         """
         ...
 
+    def cheat_tw(self, tw: int) -> None:
+        """
+        The timewarp
+        """
+        ...
+
+    def cheat_cs(self, cs: bool) -> None:
+        """
+        The CS changer
+        """
+        ...
+
     def set_passed_objects(self, passed_objects: int) -> None:
         """
         The amount of passed objects, handy for partial plays like fails
