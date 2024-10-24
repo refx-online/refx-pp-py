@@ -172,7 +172,7 @@ impl PyCalculator {
                 "notrefx" => {
                     this.notrefx = value
                         .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'shaymi_mode': must be a boolean"))?;
+                        .map_err(|_| PyTypeError::new_err("kwarg 'notrefx': must be a boolean"))?;
                 }
                 kwarg => {
                     let err = format!(
