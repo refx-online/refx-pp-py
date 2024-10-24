@@ -1,7 +1,5 @@
 use refx_pp::{
-    osu::{OsuDifficultyAttributes, OsuPerformanceAttributes},
-    osu_2019::OsuPP,
-    AnyPP, AnyStars, DifficultyAttributes, GameMode, Mods, PerformanceAttributes,
+    osu::{OsuDifficultyAttributes, OsuPerformanceAttributes}, osu_2019::OsuPP, osu_2019_2::FxPP, AnyPP, AnyStars, DifficultyAttributes, GameMode, Mods, PerformanceAttributes
 };
 use pyo3::{
     exceptions::{PyTypeError, PyValueError},
@@ -39,6 +37,7 @@ pub struct PyCalculator {
 
     tw: Option<usize>,
     cs: Option<bool>,
+    notrefx: bool,
 }
 
 macro_rules! set_calc {
@@ -169,6 +168,11 @@ impl PyCalculator {
                     })?;
 
                     this.attributes = Some(attrs.inner);
+                }
+                "notrefx" => {
+                    this.notrefx = value
+                        .extract()
+                        .map_err(|_| PyTypeError::new_err("kwarg 'shaymi_mode': must be a boolean"))?;
                 }
                 kwarg => {
                     let err = format!(
@@ -345,8 +349,64 @@ impl PyCalculator {
 
         Ok(PerformanceAttributes::Osu(new_attrs).into())
     }
+    
+    fn performance_notrefx(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
+        let mut calc = FxPP::new_from_map(&map.inner);
+
+        set_calc! { calc, self:
+            mods,
+            combo,
+            n300,
+            n100,
+            n50,
+            passed_objects,
+        };
+
+        if let Some(n_misses) = self.n_misses {
+            calc = calc.misses(n_misses);
+        }
+
+        if let Some(acc) = self.acc {
+            calc = calc.accuracy(acc as f32);
+        }
+
+        let attrs = calc.calculate();
+
+        let new_attrs = OsuPerformanceAttributes {
+            difficulty: OsuDifficultyAttributes {
+                aim: attrs.difficulty.aim_strain,
+                speed: attrs.difficulty.speed_strain,
+                flashlight: 0.0,
+                slider_factor: 0.0,
+                speed_note_count: 0.0,
+                ar: attrs.difficulty.ar,
+                od: attrs.difficulty.od,
+                hp: attrs.difficulty.hp,
+                cs: attrs.difficulty.cs,
+                n_circles: attrs.difficulty.n_circles,
+                n_sliders: attrs.difficulty.n_sliders,
+                n_spinners: attrs.difficulty.n_spinners,
+                stars: attrs.difficulty.stars,
+                max_combo: attrs.difficulty.max_combo,
+                aim_difficult_strain_count: 0.0,
+                speed_difficult_strain_count: 0.0,
+            },
+            pp: attrs.pp,
+            pp_acc: attrs.pp_acc,
+            pp_aim: attrs.pp_aim,
+            pp_flashlight: attrs.pp_flashlight,
+            pp_speed: attrs.pp_speed,
+            effective_miss_count: attrs.effective_miss_count,
+        };
+
+        Ok(PerformanceAttributes::Osu(new_attrs).into())
+    }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
+        // * if a player isnt playing on refx client, we return this.
+        if self.notrefx {
+            return self.performance_notrefx(map);
+        }
         // criteria:
         // - is relax
         // - is osu!standard
