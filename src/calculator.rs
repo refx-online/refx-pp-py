@@ -403,8 +403,10 @@ impl PyCalculator {
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
-        // * if a player isnt playing on refx client, we return this.
-        if self.notrefx {
+        // * if a player isnt playing on refx client, we check for ScoreV2 mod and we return this.
+        if (self.mods.is_some() && self.mods.unwrap().sv2()) || self.notrefx
+            && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
+                || self.mode == Some(GameMode::Osu)) {
             return self.performance_notrefx(map);
         }
         // criteria:
