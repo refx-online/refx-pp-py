@@ -21,7 +21,7 @@ authors = [
     { name = "Max Ohn", email = "ohn.m@hotmail.de" },
     { name = "tsunyoku", email = "tsunyoku@gmail.com" },
     { name = "ldci4", email = "anoletenu@gmail.com" },
-    { name = "10pc", email = "<kaupec1@gmail.com>" }
+    { name = "10pc", email = "kaupec1@gmail.com" }
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
