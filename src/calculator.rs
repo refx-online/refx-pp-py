@@ -37,7 +37,7 @@ pub struct PyCalculator {
 
     tw: Option<usize>,
     cs: Option<bool>,
-    notrefx: bool,
+    notrefx: bool, // not needed? actually just incase
 }
 
 macro_rules! set_calc {
@@ -403,7 +403,9 @@ impl PyCalculator {
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
-        // * if a player isnt playing on refx client, we check for ScoreV2 mod and we return this.
+        // * if a player isnt playing on refx client, we check for ScoreV2 mod and we return
+        // * the other client calculation https://github.com/refx-online/refx-pp-rs/pull/1
+        // * and is osu!standard. or mode is not specified and map is osu!standard, as that will be the inferred mode
         if (self.mods.is_some() && self.mods.unwrap().sv2()) || self.notrefx
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu)) {
@@ -412,6 +414,7 @@ impl PyCalculator {
         // criteria:
         // - is relax
         // - is osu!standard
+        // - is shaymi
         //   or mode is not specified and map is osu!standard, as that will be the inferred mode
         if (self.mods.is_some() && self.mods.unwrap().rx()) || self.shaymi_mode
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
