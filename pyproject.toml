@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "refx-pp-py"
-version = "0.3.9"
+version = "0.4.0"
 requires-python = ">=3.7"
 description = "osu! difficulty and pp calculation for all modes"
 classifiers = [
@@ -20,7 +20,8 @@ packages = [{ include = "refx_pp_py" }]
 authors = [
     { name = "Max Ohn", email = "ohn.m@hotmail.de" },
     { name = "tsunyoku", email = "tsunyoku@gmail.com" },
-    { name = "ldci4", email = "anoletenu@gmail.com"}
+    { name = "ldci4", email = "anoletenu@gmail.com" },
+    { name = "10pc", email = "<kaupec1@gmail.com>" }
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
