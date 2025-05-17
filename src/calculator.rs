@@ -29,15 +29,6 @@ pub struct PyCalculator {
     combo: Option<usize>,
     passed_objects: Option<usize>,
     clock_rate: Option<f64>,
-    shaymi_mode: bool,
-
-    ac: Option<usize>,
-    arc: Option<f64>,
-    hdr: Option<bool>,
-
-    tw: Option<usize>,
-    cs: Option<bool>,
-    notrefx: bool, // not needed? actually just incase
 }
 
 macro_rules! set_calc {
@@ -76,11 +67,6 @@ impl PyCalculator {
                         3 => Some(GameMode::Mania),
                         _ => return Err(PyValueError::new_err("invalid mode integer")),
                     }
-                }
-                "shaymi_mode" => {
-                    this.shaymi_mode = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'shaymi_mode': must be a boolean"))?;
                 }
                 "mods" => {
                     this.mods = value
@@ -127,31 +113,6 @@ impl PyCalculator {
                         .extract()
                         .map_err(|_| PyTypeError::new_err("kwarg 'combo': must be an int"))?;
                 }
-                "ac" => {
-                    this.ac = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'ac': must be an int"))?;
-                }
-                "arc" => {
-                    this.arc = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'arc': must be a real number"))?;
-                }
-                "hdr" => {
-                    this.hdr = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'hdr': must be a boolean"))?;
-                }
-                "tw" => {
-                    this.hdr = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'tw': must be an int"))?;
-                }
-                "cs" => {
-                    this.hdr = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'cs': must be a boolean"))?;
-                }
                 "passed_objects" => {
                     this.passed_objects = value.extract().map_err(|_| {
                         PyTypeError::new_err("kwarg 'passed_objects': must be an int")
@@ -168,11 +129,6 @@ impl PyCalculator {
                     })?;
 
                     this.attributes = Some(attrs.inner);
-                }
-                "notrefx" => {
-                    this.notrefx = value
-                        .extract()
-                        .map_err(|_| PyTypeError::new_err("kwarg 'notrefx': must be a boolean"))?;
                 }
                 kwarg => {
                     let err = format!(
@@ -223,26 +179,6 @@ impl PyCalculator {
 
     fn set_combo(&mut self, combo: usize) {
         self.combo = Some(combo);
-    }
-
-    fn cheat_ac(&mut self, ac: usize) {
-        self.ac = Some(ac);
-    }
-
-    fn cheat_arc(&mut self, arc: f64) {
-        self.arc = Some(arc);
-    }
-
-    fn cheat_hdr(&mut self, hdr: bool) {
-        self.hdr = Some(hdr);
-    }
-
-    fn cheat_tw(&mut self, tw: usize) {
-        self.tw = Some(tw);
-    }
-
-    fn cheat_cs(&mut self, cs: bool) {
-        self.cs = Some(cs);
     }
 
     fn set_passed_objects(&mut self, passed_objects: usize) {
@@ -303,11 +239,6 @@ impl PyCalculator {
             n100,
             n50,
             passed_objects,
-            ac,
-            arc,
-            hdr,
-            tw,
-            cs,
         };
 
         if let Some(n_misses) = self.n_misses {
@@ -403,10 +334,7 @@ impl PyCalculator {
     }
 
     fn performance(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
-        // * if a player isnt playing on refx client, we check for ScoreV2 mod and we return
-        // * the other client calculation https://github.com/refx-online/refx-pp-rs/pull/1
-        // * and is osu!standard. or mode is not specified and map is osu!standard, as that will be the inferred mode
-        if (self.mods.is_some() && self.mods.unwrap().sv2()) || self.notrefx
+        if (self.mods.is_some() && self.mods.unwrap().sv2())
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu)) {
             return self.performance_notrefx(map);
@@ -416,7 +344,7 @@ impl PyCalculator {
         // - is osu!standard
         // - is shaymi
         //   or mode is not specified and map is osu!standard, as that will be the inferred mode
-        if (self.mods.is_some() && self.mods.unwrap().rx()) || self.shaymi_mode
+        if (self.mods.is_some() && self.mods.unwrap().rx())
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu))
         {
@@ -435,9 +363,6 @@ impl PyCalculator {
             n50,
             n_misses,
             combo,
-            ac,
-            arc,
-            hdr,
             passed_objects,
             clock_rate,
         };
