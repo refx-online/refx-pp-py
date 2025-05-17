@@ -21,7 +21,7 @@ mod perf_attrs;
 mod strains;
 
 #[pymodule]
-fn refx_pp_py(py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn refx_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
 // fn dev_pp_py(py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyBeatmap>()?;
     m.add_class::<PyCalculator>()?;
@@ -31,8 +31,8 @@ fn refx_pp_py(py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyPerformanceAttributes>()?;
     m.add_class::<PyStrains>()?;
 
-    m.add("ParseError", py.get_type_bound::<ParseError>())?;
-    m.add("KwargsError", py.get_type_bound::<KwargsError>())?;
+    m.add("ParseError", py.get_type::<ParseError>())?;
+    m.add("KwargsError", py.get_type::<KwargsError>())?;
 
     Ok(())
 }
