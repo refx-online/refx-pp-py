@@ -1,5 +1,5 @@
 use refx_pp::{
-    osu::{OsuDifficultyAttributes, OsuPerformanceAttributes}, osu_2019::OsuPP, osu_2019_2::FxPP, AnyPP, AnyStars, DifficultyAttributes, GameMode, Mods, PerformanceAttributes
+    osu::{OsuDifficultyAttributes, OsuPerformanceAttributes}, relax::OsuPP, scorev2::FxPP, AnyPP, AnyStars, DifficultyAttributes, GameMode, Mods, PerformanceAttributes
 };
 use pyo3::{
     exceptions::{PyTypeError, PyValueError},
@@ -229,7 +229,7 @@ impl PyCalculator {
         Ok(calc.calculate().into())
     }
 
-    fn performance_2019(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
+    fn performance_relax(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
         let mut calc = OsuPP::new(&map.inner);
 
         set_calc! { calc, self:
@@ -281,7 +281,7 @@ impl PyCalculator {
         Ok(PerformanceAttributes::Osu(new_attrs).into())
     }
     
-    fn performance_notrefx(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
+    fn performance_scorev2(&self, map: &PyBeatmap) -> PyResult<PyPerformanceAttributes> {
         let mut calc = FxPP::new_from_map(&map.inner);
 
         set_calc! { calc, self:
@@ -337,18 +337,17 @@ impl PyCalculator {
         if (self.mods.is_some() && self.mods.unwrap().sv2())
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu)) {
-            return self.performance_notrefx(map);
+            return self.performance_scorev2(map);
         }
         // criteria:
         // - is relax
         // - is osu!standard
-        // - is shaymi
         //   or mode is not specified and map is osu!standard, as that will be the inferred mode
         if (self.mods.is_some() && self.mods.unwrap().rx())
             && ((self.mode.is_none() && map.inner.mode == GameMode::Osu)
                 || self.mode == Some(GameMode::Osu))
         {
-            return self.performance_2019(map);
+            return self.performance_relax(map);
         }
 
         let mut calc = AnyPP::new(&map.inner);
