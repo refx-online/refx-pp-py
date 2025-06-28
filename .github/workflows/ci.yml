@@ -184,8 +184,8 @@ jobs:
             python3 -m venv venv
             source venv/bin/activate
             python3 -m pip install -U pip typing-extensions
-            python3 -m pip install rosu_pp_py --no-index --no-deps --find-links dist --force-reinstall
-            python3 -c "import rosu_pp_py"
+            python3 -m pip install refx_pp_py --no-index --no-deps --find-links dist --force-reinstall
+            python3 -c "import refx_pp_py"
 
   test-builds-os:
     name: Test build on ${{ matrix.os }}
@@ -215,8 +215,8 @@ jobs:
 
       - run: |
           pip install typing-extensions
-          pip install rosu_pp_py --no-index --no-deps --find-links dist --force-reinstall
-          python -c "import rosu_pp_py"
+          pip install refx_pp_py --no-index --no-deps --find-links dist --force-reinstall
+          python -c "import refx_pp_py"
 
   release:
     name: Release
@@ -243,9 +243,3 @@ jobs:
           path: dist
 
       - run: twine check --strict dist/*
-
-      - name: Upload to PyPI
-        run: twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}

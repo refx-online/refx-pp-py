@@ -1,5 +1,5 @@
 use pyo3::{pyclass, pymethods, PyResult, Python};
-use rosu_pp::GradualPerformance;
+use refx_pp::GradualPerformance;
 
 use crate::{
     attributes::performance::PyPerformanceAttributes, beatmap::PyBeatmap, difficulty::PyDifficulty,

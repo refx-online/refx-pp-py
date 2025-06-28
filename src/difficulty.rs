@@ -4,7 +4,7 @@ use pyo3::{
     types::{PyAnyMethods, PyDict},
     Bound, Py, PyAny, PyResult, Python,
 };
-use rosu_pp::{model::mode::GameMode, Difficulty};
+use refx_pp::{model::mode::GameMode, Difficulty};
 
 use crate::{
     attributes::difficulty::PyDifficultyAttributes,

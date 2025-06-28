@@ -35,7 +35,7 @@ pub enum PyGameMods {
 impl PyGameMods {
     pub(crate) fn extract<'py>(
         mods: Option<&Py<PyAny>>,
-        mode: rosu_pp::model::mode::GameMode,
+        mode: refx_pp::model::mode::GameMode,
         py: Python<'py>,
     ) -> PyResult<Self> {
         let Some(mods) = mods else {

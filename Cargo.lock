@@ -135,6 +135,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "refx-pp"
+version = "0.4.3"
+source = "git+https://github.com/refx-online/refx-pp-rs?rev=b7282ef60762a189159d0041d1f4ce325d80d834#b7282ef60762a189159d0041d1f4ce325d80d834"
+dependencies = [
+ "rosu-map",
+ "rosu-mods",
+]
+
+[[package]]
+name = "refx-pp-py"
+version = "0.4.3"
+dependencies = [
+ "pyo3",
+ "refx-pp",
+ "rosu-mods",
+ "serde",
+]
+
+[[package]]
 name = "rosu-map"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -146,26 +165,6 @@ version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cdc002dd5c7baef181e98980615ef27df55f35ff291c088cb37e6a339f2777e1"
 dependencies = [
- "serde",
-]
-
-[[package]]
-name = "rosu-pp"
-version = "3.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "46d32ddc712a7aa3f5541549cdb8a3ca050a902b654e3e15af7d29849689d14e"
-dependencies = [
- "rosu-map",
- "rosu-mods",
-]
-
-[[package]]
-name = "rosu-pp-py"
-version = "3.1.0"
-dependencies = [
- "pyo3",
- "rosu-mods",
- "rosu-pp",
  "serde",
 ]
 

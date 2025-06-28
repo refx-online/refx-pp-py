@@ -4,7 +4,7 @@ use pyo3::{
     types::{PyAnyMethods, PyDict},
     Bound, Py, PyAny, PyRef, PyResult, Python,
 };
-use rosu_pp::model::beatmap::{BeatmapAttributes, BeatmapAttributesBuilder, HitWindows};
+use refx_pp::model::beatmap::{BeatmapAttributes, BeatmapAttributesBuilder, HitWindows};
 
 use crate::{beatmap::PyBeatmap, error::ArgsError, mode::PyGameMode, mods::PyGameMods};
 

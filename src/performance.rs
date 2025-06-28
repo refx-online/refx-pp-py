@@ -4,7 +4,7 @@ use pyo3::{
     types::{PyAnyMethods, PyDict},
     Bound, Py, PyAny, PyRef, PyResult, Python,
 };
-use rosu_pp::{
+use refx_pp::{
     any::{DifficultyAttributes, HitResultPriority},
     model::mode::GameMode,
     Difficulty, Performance,

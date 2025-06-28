@@ -6,7 +6,7 @@ use pyo3::{
     types::{PyAnyMethods, PyDict},
     Bound, Py, PyAny, PyResult, Python,
 };
-use rosu_pp::{
+use refx_pp::{
     model::{hit_object::HitObjectKind, mode::GameMode},
     Beatmap,
 };
