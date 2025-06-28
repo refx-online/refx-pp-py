@@ -1,21 +1,21 @@
 [package]
-name = "rosu-pp-py"
-version = "3.1.0"
+name = "refx-pp-py"
+version = "0.4.3"
 edition = "2021"
-authors = ["Max Ohn <ohn.m@hotmail.de>"]
+authors = ["Max Ohn <ohn.m@hotmail.de>", "remeliah <anoletenu@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/MaxOhn/rosu-pp-py"
+repository = "https://github.com/refx-online/refx-pp-py"
 description = "Difficulty and performance calculation for osu!"
 
 [lib]
-name = "rosu_pp_py"
+name = "refx_pp_py"
 crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.24", features = ["extension-module", "macros"] }
 rosu-mods = { version = "0.3.0", default-features = false, features = ["serde"] }
-rosu-pp = { version = "3.1.0", features = ["sync"] }
+refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "b7282ef60762a189159d0041d1f4ce325d80d834", features = ["sync"] }
 serde = { version = "1.0.203" }
 
 [profile.release]
