@@ -24,6 +24,8 @@ define_class! {
         pub speed_deviation: f64?,
         pub estimated_unstable_rate: f64?,
         pub pp_difficulty: f64?,
+        pub aim_estimated_slider_breaks: f64?,
+        pub speed_estimated_slider_breaks: f64?,
     }
 }
 
@@ -38,6 +40,8 @@ impl From<OsuPerformanceAttributes> for PyPerformanceAttributes {
             pp_speed,
             effective_miss_count,
             speed_deviation,
+            aim_estimated_slider_breaks,
+            speed_estimated_slider_breaks
         } = attrs;
 
         Self {
@@ -49,6 +53,8 @@ impl From<OsuPerformanceAttributes> for PyPerformanceAttributes {
             pp_speed: Some(pp_speed),
             effective_miss_count: Some(effective_miss_count),
             speed_deviation,
+            aim_estimated_slider_breaks: Some(aim_estimated_slider_breaks),
+            speed_estimated_slider_breaks: Some(speed_estimated_slider_breaks),
             ..Self::default()
         }
     }

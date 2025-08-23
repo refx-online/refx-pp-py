@@ -136,8 +136,8 @@ dependencies = [
 
 [[package]]
 name = "refx-pp"
-version = "0.4.3"
-source = "git+https://github.com/refx-online/refx-pp-rs?rev=b7282ef60762a189159d0041d1f4ce325d80d834#b7282ef60762a189159d0041d1f4ce325d80d834"
+version = "0.4.8"
+source = "git+https://github.com/refx-online/refx-pp-rs?rev=dd9b553e6fd9fbf502e88bb6df73469e3f98608c#dd9b553e6fd9fbf502e88bb6df73469e3f98608c"
 dependencies = [
  "rosu-map",
  "rosu-mods",
@@ -145,7 +145,7 @@ dependencies = [
 
 [[package]]
 name = "refx-pp-py"
-version = "0.4.3"
+version = "0.4.4"
 dependencies = [
  "pyo3",
  "refx-pp",

@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "refx-pp-py"
-version = "0.4.3"
+version = "0.4.4"
 requires-python = ">=3.7"
 description = "Difficulty and performance calculation for osu!"
 classifiers = [

@@ -41,6 +41,8 @@ define_class! {
         pub meh_hit_window: f64?,
         pub mono_stamina_factor: f64?,
         pub max_combo: u32!,
+        pub aim_top_weighted_slider_factor: f64?,
+        pub speed_top_weighted_slider_factor: f64?,
     }
 }
 
@@ -66,6 +68,8 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             n_spinners,
             stars,
             max_combo,
+            aim_top_weighted_slider_factor,
+            speed_top_weighted_slider_factor,
         } = attrs;
 
         Self {
@@ -90,6 +94,8 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             n_large_ticks: Some(n_large_ticks),
             n_spinners: Some(n_spinners),
             max_combo,
+            aim_top_weighted_slider_factor: Some(aim_top_weighted_slider_factor),
+            speed_top_weighted_slider_factor: Some(speed_top_weighted_slider_factor),
             ..Self::default()
         }
     }
@@ -223,6 +229,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
             meh_hit_window,
             mono_stamina_factor,
             max_combo,
+            aim_top_weighted_slider_factor,
+            speed_top_weighted_slider_factor,
         } = attrs;
 
         match mode {
@@ -245,6 +253,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     Some(n_sliders),
                     Some(n_large_ticks),
                     Some(n_spinners),
+                    Some(aim_top_weighted_slider_factor),
+                    Some(speed_top_weighted_slider_factor)
                 ) = (
                     aim,
                     aim_difficult_slider_count,
@@ -263,6 +273,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     n_sliders,
                     n_large_ticks,
                     n_spinners,
+                    aim_top_weighted_slider_factor,
+                    speed_top_weighted_slider_factor,
                 ) {
                     return Ok(Self::Osu(OsuDifficultyAttributes {
                         aim,
@@ -284,6 +296,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                         n_spinners,
                         stars,
                         max_combo,
+                        aim_top_weighted_slider_factor,
+                        speed_top_weighted_slider_factor,
                     }));
                 }
             }
