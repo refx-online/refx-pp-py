@@ -15,7 +15,9 @@ crate-type = ["cdylib"]
 [dependencies]
 pyo3 = { version = "0.24", features = ["extension-module", "macros"] }
 rosu-mods = { version = "0.3.0", default-features = false, features = ["serde"] }
+
 refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "dd9b553e6fd9fbf502e88bb6df73469e3f98608c", features = ["sync"] }
+
 serde = { version = "1.0.203" }
 
 [profile.release]
