@@ -824,6 +824,14 @@ class DifficultyAttributes:
         """
 
     @property
+    def reading_difficult_note_count(self) -> Optional[float]:
+        """
+        Weighted sum of reading strains.
+
+        Only available for osu!.
+        """
+
+    @property
     def hp(self) -> Optional[float]:
         """
         The health drain rate.
@@ -891,7 +899,7 @@ class DifficultyAttributes:
         """
         The difficulty of the reading skill.
 
-        Only available for osu!taiko.
+        Only available for osu! and osu!taiko.
         """
 
     @property
@@ -988,6 +996,46 @@ class DifficultyAttributes:
         The maximum combo on the map.
         """
 
+    @property
+    def aim_top_weighted_slider_factor(self) -> Optional[float]:
+        """
+        The aim top weighted slider factor.
+
+        Only available for osu!.
+        """
+
+    @property
+    def speed_top_weighted_slider_factor(self) -> Optional[float]:
+        """
+        The speed top weighted slider factor.
+
+        Only available for osu!.
+        """
+
+    @property
+    def nested_score_per_object(self) -> Optional[float]:
+        """
+        The average nested score per object.
+
+        Only available for osu!.
+        """
+
+    @property
+    def legacy_score_base_multiplier(self) -> Optional[float]:
+        """
+        The base multiplier for legacy score calculation.
+
+        Only available for osu!.
+        """
+
+    @property
+    def maximum_legacy_combo_score(self) -> Optional[float]:
+        """
+        The maximum achievable legacy combo score.
+
+        Only available for osu!.
+        """
+
 class PerformanceAttributes:
     """
     The result of a performance calculation
@@ -1030,6 +1078,14 @@ class PerformanceAttributes:
         """
 
     @property
+    def pp_reading(self) -> Optional[float]:
+        """
+        The reading portion of the final pp.
+
+        Only available for osu!.
+        """
+
+    @property
     def pp_accuracy(self) -> Optional[float]:
         """
         The accuracy portion of the final pp.
@@ -1049,6 +1105,38 @@ class PerformanceAttributes:
     def speed_deviation(self) -> Optional[float]:
         """
         Approximated unstable-rate
+
+        Only available for osu!.
+        """
+
+    @property
+    def combo_based_estimated_miss_count(self) -> Optional[float]:
+        """
+        Combo based estimated miss count.
+
+        Only available for osu!.
+        """
+
+    @property
+    def score_based_estimated_miss_count(self) -> Optional[float]:
+        """
+        Score based estimated miss count.
+
+        Only available for osu!.
+        """
+
+    @property
+    def aim_estimated_slider_breaks(self) -> Optional[float]:
+        """
+        The aim estimated slider breaks.
+
+        Only available for osu!.
+        """
+
+    @property
+    def speed_estimated_slider_breaks(self) -> Optional[float]:
+        """
+        The speed estimated slider breaks.
 
         Only available for osu!.
         """

@@ -21,6 +21,7 @@ define_class! {
         pub speed_note_count: f64?,
         pub aim_difficult_strain_count: f64?,
         pub speed_difficult_strain_count: f64?,
+        pub reading_difficult_note_count: f64?,
         pub hp: f64?,
         pub n_circles: u32?,
         pub n_sliders: u32?,
@@ -43,6 +44,9 @@ define_class! {
         pub max_combo: u32!,
         pub aim_top_weighted_slider_factor: f64?,
         pub speed_top_weighted_slider_factor: f64?,
+        pub nested_score_per_object: f64?,
+        pub legacy_score_base_multiplier: f64?,
+        pub maximum_legacy_combo_score: f64?,
     }
 }
 
@@ -53,10 +57,12 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             aim_difficult_slider_count,
             speed,
             flashlight,
+            reading,
             slider_factor,
             speed_note_count,
             aim_difficult_strain_count,
             speed_difficult_strain_count,
+            reading_difficult_note_count,
             ar,
             great_hit_window,
             ok_hit_window,
@@ -70,6 +76,9 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             max_combo,
             aim_top_weighted_slider_factor,
             speed_top_weighted_slider_factor,
+            nested_score_per_object,
+            legacy_score_base_multiplier,
+            maximum_legacy_combo_score,
         } = attrs;
 
         Self {
@@ -80,10 +89,12 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             aim_difficult_slider_count: Some(aim_difficult_slider_count),
             speed: Some(speed),
             flashlight: Some(flashlight),
+            reading: Some(reading),
             slider_factor: Some(slider_factor),
             speed_note_count: Some(speed_note_count),
             aim_difficult_strain_count: Some(aim_difficult_strain_count),
             speed_difficult_strain_count: Some(speed_difficult_strain_count),
+            reading_difficult_note_count: Some(reading_difficult_note_count),
             ar: Some(ar),
             great_hit_window: Some(great_hit_window),
             ok_hit_window: Some(ok_hit_window),
@@ -96,6 +107,9 @@ impl From<OsuDifficultyAttributes> for PyDifficultyAttributes {
             max_combo,
             aim_top_weighted_slider_factor: Some(aim_top_weighted_slider_factor),
             speed_top_weighted_slider_factor: Some(speed_top_weighted_slider_factor),
+            nested_score_per_object: Some(nested_score_per_object),
+            legacy_score_base_multiplier: Some(legacy_score_base_multiplier),
+            maximum_legacy_combo_score: Some(maximum_legacy_combo_score),
             ..Self::default()
         }
     }
@@ -209,6 +223,7 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
             speed_note_count,
             aim_difficult_strain_count,
             speed_difficult_strain_count,
+            reading_difficult_note_count,
             hp,
             n_circles,
             n_sliders,
@@ -231,6 +246,9 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
             max_combo,
             aim_top_weighted_slider_factor,
             speed_top_weighted_slider_factor,
+            nested_score_per_object,
+            legacy_score_base_multiplier,
+            maximum_legacy_combo_score,
         } = attrs;
 
         match mode {
@@ -244,6 +262,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     Some(speed_note_count),
                     Some(aim_difficult_strain_count),
                     Some(speed_difficult_strain_count),
+                    Some(reading),
+                    Some(reading_difficult_note_count),
                     Some(ar),
                     Some(great_hit_window),
                     Some(ok_hit_window),
@@ -254,7 +274,10 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     Some(n_large_ticks),
                     Some(n_spinners),
                     Some(aim_top_weighted_slider_factor),
-                    Some(speed_top_weighted_slider_factor)
+                    Some(speed_top_weighted_slider_factor),
+                    Some(nested_score_per_object),
+                    Some(legacy_score_base_multiplier),
+                    Some(maximum_legacy_combo_score),
                 ) = (
                     aim,
                     aim_difficult_slider_count,
@@ -264,6 +287,8 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     speed_note_count,
                     aim_difficult_strain_count,
                     speed_difficult_strain_count,
+                    reading,
+                    reading_difficult_note_count,
                     ar,
                     great_hit_window,
                     ok_hit_window,
@@ -275,16 +300,21 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                     n_spinners,
                     aim_top_weighted_slider_factor,
                     speed_top_weighted_slider_factor,
+                    nested_score_per_object,
+                    legacy_score_base_multiplier,
+                    maximum_legacy_combo_score,
                 ) {
                     return Ok(Self::Osu(OsuDifficultyAttributes {
                         aim,
                         aim_difficult_slider_count,
                         speed,
                         flashlight,
+                        reading,
                         slider_factor,
                         speed_note_count,
                         aim_difficult_strain_count,
                         speed_difficult_strain_count,
+                        reading_difficult_note_count,
                         ar,
                         great_hit_window,
                         ok_hit_window,
@@ -298,6 +328,9 @@ impl TryFrom<PyDifficultyAttributes> for DifficultyAttributes {
                         max_combo,
                         aim_top_weighted_slider_factor,
                         speed_top_weighted_slider_factor,
+                        nested_score_per_object,
+                        legacy_score_base_multiplier,
+                        maximum_legacy_combo_score,
                     }));
                 }
             }

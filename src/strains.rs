@@ -32,7 +32,6 @@ impl From<OsuStrains> for PyStrains {
         let OsuStrains {
             aim,
             aim_no_sliders,
-            speed,
             flashlight,
         } = strains;
 
@@ -41,7 +40,6 @@ impl From<OsuStrains> for PyStrains {
             section_length: OsuStrains::SECTION_LEN,
             aim: Some(aim),
             aim_no_sliders: Some(aim_no_sliders),
-            speed: Some(speed),
             flashlight: Some(flashlight),
             ..Self::default()
         }

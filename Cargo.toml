@@ -1,6 +1,6 @@
 [package]
 name = "refx-pp-py"
-version = "0.4.4"
+version = "0.4.5"
 edition = "2021"
 authors = ["Max Ohn <ohn.m@hotmail.de>", "remeliah <anoletenu@gmail.com>"]
 license = "MIT"
@@ -16,7 +16,7 @@ crate-type = ["cdylib"]
 pyo3 = { version = "0.24", features = ["extension-module", "macros"] }
 rosu-mods = { version = "0.3.0", default-features = false, features = ["serde"] }
 
-refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "834b22b0c4d03ebae6b142844ecdf74b3b277a43", features = ["sync"] }
+refx-pp = { git = "https://github.com/refx-online/refx-pp-rs", rev = "62b0c534068f8d9a9cc16521e85e3f69256e6f7a", features = ["sync"] }
 
 serde = { version = "1.0.203" }
 

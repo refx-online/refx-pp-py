@@ -45,6 +45,7 @@ pub struct PyPerformance {
     pub(crate) n100: Option<u32>,
     pub(crate) n50: Option<u32>,
     pub(crate) misses: Option<u32>,
+    pub(crate) legacy_score: Option<i64>,
     pub(crate) hitresult_priority: PyHitResultPriority,
 }
 
@@ -86,6 +87,7 @@ impl PyPerformance {
                     n100: "int",
                     n50: "int",
                     misses: "int",
+                    legacy_score: "int",
                     hitresult_priority: "HitResultPriority",
                 }
             }
@@ -262,6 +264,11 @@ impl PyPerformance {
         self.misses = misses;
     }
 
+    #[pyo3(signature = (score=None))]
+    fn set_legacy_score(&mut self, score: Option<i64>) {
+        self.legacy_score = score;
+    }
+
     #[pyo3(signature = (hitresult_priority=None))]
     fn set_hitresult_priority(&mut self, hitresult_priority: Option<PyHitResultPriority>) {
         self.hitresult_priority = hitresult_priority.unwrap_or_default();
@@ -312,6 +319,10 @@ impl PyPerformance {
 
         if let Some(misses) = self.misses {
             perf = perf.misses(misses);
+        }
+
+        if let Some(legacy_score) = self.legacy_score {
+            perf = perf.legacy_total_score(legacy_score);
         }
 
         let mode = match perf {
